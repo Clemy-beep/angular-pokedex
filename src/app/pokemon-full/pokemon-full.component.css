@@ -1,0 +1,55 @@
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2em;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1em;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+h1{
+  text-decoration: underline 4px solid rgb(248, 193, 12);
+}
+
+.pokemon-types{
+  display: inline;
+  margin: 0.2em;
+  vertical-align: middle;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+}
+
+sub{
+  font-size: 1.1em;
+  font-style: italic;
+  color: rgb(220, 59, 59);
+  font-weight: 500;
+}
+
+.resistances{
+  display: inline;
+  margin: 0.2em;
+  vertical-align: middle;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+}
+
+.title{
+  font-weight: 500;
+  text-decoration: underline 4px solid rgb(248, 193, 12);
+}
+
+.strongest{
+  color: aqua;
+}

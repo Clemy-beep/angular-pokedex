@@ -1,0 +1,5 @@
+<div class="btn-row">
+  @for (btnText of btnTexts; track $index) {
+  <app-button [text]="btnText" [routerLink]="btnHrefs[$index]"></app-button>
+  }
+</div>

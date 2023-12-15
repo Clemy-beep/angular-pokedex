@@ -1,0 +1,9 @@
+.pokemon-list-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100vw;
+    flex-wrap: wrap;
+    gap: 1em;
+}

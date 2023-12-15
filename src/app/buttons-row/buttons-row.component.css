@@ -1,0 +1,7 @@
+.btn-row{
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    gap: 2em;
+}

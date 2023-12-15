@@ -1,0 +1,21 @@
+<div class="card-container">
+  <div>
+    <div class="pokemon-types">
+      <h2><a [routerLink]="['pokemon', pokemon.id]">{{ pokemon.name }}</a></h2>
+      <img
+        class="pokemon-type"
+        *ngFor="let type of pokemon.apiTypes"
+        [src]="type.image"
+        alt="pokemon-img"/>
+    </div>
+    <img [src]="pokemon.image" [alt]="pokemon.name" />
+  </div>
+  <div class="pokemon-stats">
+    <p>HP : {{ pokemon.stats.HP }}</p>
+    <p>Attack : {{ pokemon.stats.attack }}</p>
+    <p>Defense : {{ pokemon.stats.defense }}</p>
+    <p>Special attack : {{ pokemon.stats.special_attack }}</p>
+    <p>Special defense : {{ pokemon.stats.special_defense }}</p>
+    <p>Speed : {{ pokemon.stats.speed }}</p>
+  </div>
+</div>

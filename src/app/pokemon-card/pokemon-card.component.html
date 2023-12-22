@@ -1,7 +1,7 @@
 <div class="card-container">
   <div>
     <div class="pokemon-types">
-      <h2><a [routerLink]="['pokemon', pokemon.id]">{{ pokemon.name }}</a></h2>
+      <h2><a [routerLink]="['/pokemon', pokemon.id]">{{ pokemon.name }}</a></h2>
       <img
         class="pokemon-type"
         *ngFor="let type of pokemon.apiTypes"

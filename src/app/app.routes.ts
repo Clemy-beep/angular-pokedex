@@ -8,6 +8,7 @@ import {Generation5Component} from "./generation-5/generation-5.component";
 import {Generation6Component} from "./generation-6/generation-6.component";
 import {Generation7Component} from "./generation-7/generation-7.component";
 import {Generation8Component} from "./generation-8/generation-8.component";
+import {SearchComponent} from "./search/search.component";
 
 export const routes: Routes = [
     { path: '', component: PokemonsListComponent},
@@ -18,5 +19,6 @@ export const routes: Routes = [
     { path: 'generation-5', component: Generation5Component},
     { path: 'generation-6', component: Generation6Component},
     { path: 'generation-7', component: Generation7Component},
-    { path: 'generation-8', component: Generation8Component}
+    { path: 'generation-8', component: Generation8Component},
+    { path: 'search', component: SearchComponent}
 ];

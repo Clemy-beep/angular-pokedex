@@ -13,35 +13,35 @@
       <ul>
         <li *ngFor="let talent of pokemon.talents">{{talent.name}}<span *ngIf="talent.tc"> (caché)</span> </li>
       </ul>
-      <p  [class]="{'strongest-stat': strongestStat === pokemon.stats.hp, 'weakest-stat' : weakestStat === pokemon.stats.hp}"><span class="title">HP</span> : {{pokemon.stats.hp}}</p>
-      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.atk, 'weakest-stat' : weakestStat === pokemon.stats.atk}"><span class="title" >Attack</span> : {{pokemon.stats.atk}}</p>
-      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.def, 'weakest-stat' : weakestStat === pokemon.stats.def}"><span class="title">Defense</span> : {{pokemon.stats.def}}</p>
-      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.spe_atk, 'weakest-stat' : weakestStat === pokemon.stats.spe_atk}"><span class="title">Special attack</span> : {{pokemon.stats.spe_atk}}</p>
-      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.spe_def, 'weakest-stat' : weakestStat === pokemon.stats.spe_def}"><span class="title">Special defense</span> : {{pokemon.stats.spe_def}}</p>
-      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.vit, 'weakest-stat' : weakestStat === pokemon.stats.vit}"><span class="title">Speed</span> : {{pokemon.stats.vit}}</p>
-      <p><span class="title">Weaknesses</span> :
+      <p  [class]="{'strongest-stat': strongestStat === pokemon.stats.hp, 'weakest-stat' : weakestStat === pokemon.stats.hp}"><span class="title">PV</span> : {{pokemon.stats.hp}}</p>
+      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.atk, 'weakest-stat' : weakestStat === pokemon.stats.atk}"><span class="title" >Attaque</span> : {{pokemon.stats.atk}}</p>
+      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.def, 'weakest-stat' : weakestStat === pokemon.stats.def}"><span class="title">Défense</span> : {{pokemon.stats.def}}</p>
+      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.spe_atk, 'weakest-stat' : weakestStat === pokemon.stats.spe_atk}"><span class="title">Attaque spéciale</span> : {{pokemon.stats.spe_atk}}</p>
+      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.spe_def, 'weakest-stat' : weakestStat === pokemon.stats.spe_def}"><span class="title">Défense spéciale</span> : {{pokemon.stats.spe_def}}</p>
+      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.vit, 'weakest-stat' : weakestStat === pokemon.stats.vit}"><span class="title">Vitesse</span> : {{pokemon.stats.vit}}</p>
+      <p><span class="title">Faiblesses</span> :
         <span *ngFor="let w of pokemon.resistances">
         <span *ngIf="w.multiplier > 1">
           <img class="resistances" alt="weaknesses" [src]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(w.name) + '.png'">
         </span>
       </span>
       </p>
-      <p><span class="title">Resistances</span> :
+      <p><span class="title">Résistances</span> :
         <span *ngFor="let r of pokemon.resistances">
         <span *ngIf="r.multiplier < 1 && r.multiplier > 0">
           <img class="resistances" alt="resistance" [src]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(r.name)+ '.png'">
         </span>
       </span>
       </p>
-      <p><span class="title">Immunities</span> :
+      <p><span class="title">Immunités</span> :
         <span *ngFor="let i of pokemon.resistances">
         <span *ngIf="i.multiplier == 0" >
           <img class="resistances" [src]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(i.name)+ '.png'" alt="immunities">
         </span>
       </span>
       </p>
-      <p><span class="title">Gender</span> : {{pokemon.sexe.male }}% ♂️ {{pokemon.sexe.female}}% ♀️ </p>
-      <p *ngIf="pokemon.egg_groups.length !== 0"><span class="title">Egg groups</span> : <span *ngFor="let eggGroup of pokemon.egg_groups">{{eggGroup}} </span></p>
+      <p><span class="title">Genre</span> : {{pokemon.sexe.male }}% ♂️ {{pokemon.sexe.female}}% ♀️ </p>
+      <p *ngIf="pokemon.egg_groups.length !== 0"><span class="title">Groups œufs</span> : <span *ngFor="let eggGroup of pokemon.egg_groups">{{eggGroup}} </span></p>
     </div>
   </div>
 </div>

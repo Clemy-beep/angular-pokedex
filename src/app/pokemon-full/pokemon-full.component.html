@@ -1,5 +1,5 @@
 <div class="content" xmlns="http://www.w3.org/1999/html">
-  <h1>{{pokemon.name['fr']}}
+  <h1>{{pokemon.name.fr}}
     <img class="pokemon-types" *ngFor="let type of pokemon.types" [src]="type.image" alt="pokemon-type">
   </h1>
   <sub>{{pokemon.category}}</sub>
@@ -18,7 +18,7 @@
       <p [class]="{'strongest-stat': strongestStat === pokemon.stats.def, 'weakest-stat' : weakestStat === pokemon.stats.def}"><span class="title">Defense</span> : {{pokemon.stats.def}}</p>
       <p [class]="{'strongest-stat': strongestStat === pokemon.stats.spe_atk, 'weakest-stat' : weakestStat === pokemon.stats.spe_atk}"><span class="title">Special attack</span> : {{pokemon.stats.spe_atk}}</p>
       <p [class]="{'strongest-stat': strongestStat === pokemon.stats.spe_def, 'weakest-stat' : weakestStat === pokemon.stats.spe_def}"><span class="title">Special defense</span> : {{pokemon.stats.spe_def}}</p>
-      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.vit, 'weakest-stat' : weakestStat === pokemon.stats.vit}"><span class="title"_>Speed</span> : {{pokemon.stats.vit}}</p>
+      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.vit, 'weakest-stat' : weakestStat === pokemon.stats.vit}"><span class="title">Speed</span> : {{pokemon.stats.vit}}</p>
       <p><span class="title">Weaknesses</span> :
         <span *ngFor="let w of pokemon.resistances">
         <span *ngIf="w.multiplier > 1">

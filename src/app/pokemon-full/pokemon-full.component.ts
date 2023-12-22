@@ -40,9 +40,9 @@ export class PokemonFullComponent {
   strongestStat : number = 0;
   weakestStat : number = 0;
   constructor(private route: ActivatedRoute) {}
-  ngOnInit() {
+  async ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
-    fetch(`https://tyradex.vercel.app/api/v1/pokemon/${id}`).then(res => res.json()).then(data => {
+    await fetch(`https://tyradex.vercel.app/api/v1/pokemon/${id}`).then(res => res.json()).then(data => {
       this.pokemon = data;
       this.strongestStat = Math.max(data.stats.atk, data.stats.def, data.stats.hp, data.stats.spe_atk, data.stats.spe_def, data.stats.vit);
       this.weakestStat = Math.min(data.stats.atk, data.stats.def, data.stats.hp, data.stats.spe_atk, data.stats.spe_def, data.stats.vit);

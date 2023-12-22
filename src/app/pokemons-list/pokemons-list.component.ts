@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
+import {PokeBuildPokemon} from "../types";
+
 
 @Component({
   selector: "app-pokemons-list",
@@ -11,7 +13,7 @@ import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 })
 export class PokemonsListComponent {
   @Input() requestUrl: string = "https://pokebuildapi.fr/api/v1/pokemon/generation/1";
-  pokemons: any
+  pokemons: PokeBuildPokemon[] = [];
   ngOnInit(): void {
    fetch(this.requestUrl).then(res => res.json()).then(res => this.pokemons = res);
   }

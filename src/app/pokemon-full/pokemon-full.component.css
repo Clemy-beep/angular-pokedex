@@ -50,6 +50,16 @@ sub{
   text-decoration: underline 4px solid rgb(248, 193, 12);
 }
 
-.strongest{
-  color: aqua;
+.strongest-stat{
+  text-decoration: underline 4px solid #41cc80;
+}
+
+.weakest-stat{
+   text-decoration: underline 4px solid red;
+}
+.weakest-stat .title{
+  text-decoration: none;
+}
+.strongest-stat .title{
+  text-decoration: none;
 }

@@ -1,3 +1,3 @@
-<button class="top-btn">
+<button class="top-btn" [class]="{'search-btn': text === 'Recherche'}">
   <a [routerLink]="routerLink" [textContent]="text"></a>
 </button>

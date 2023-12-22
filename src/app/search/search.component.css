@@ -1,0 +1,25 @@
+.search-result{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 1em;
+}
+
+.search-bar{
+  display: inline-block;
+  margin-right: 0.2em;
+  background-color: white;
+  border: 3px solid rgb(248, 193, 12);
+  color: #333333;
+  padding: 0.5em 1em;
+  border-radius: 32px;
+  height: 1.5em;
+  width: 20%;
+}
+
+.search-block{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em;
+}

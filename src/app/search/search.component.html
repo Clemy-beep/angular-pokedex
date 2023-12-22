@@ -1,0 +1,8 @@
+<div class="search-block">
+  <h2>Rechercher un pokémon 🔍</h2>
+  <input type="text" name="search-pokemon" id="search-pokemon" class="search-bar" [formControl]="pokemonToSearch" (keyup)="searchPokemon()" placeholder="Tapez le nom du Pokémon recherché" >
+</div>
+<div class="search-result" *ngIf="pokemonToSearch.value !=='' && pokemonToSearch.value.length >= 4">
+  <app-pokemon-card *ngFor="let pokemon of pokemonsList" [pokemon]="pokemon"></app-pokemon-card>
+</div>
+

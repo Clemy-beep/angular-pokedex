@@ -1,9 +1,26 @@
 .pokemon-list-card{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100vw;
-    flex-wrap: wrap;
-    gap: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.order-by-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  width: fit-content;
+  margin: 2em 8em 2em auto;
+}
+
+.order-by{
+  border: 3px solid rgb(248, 193, 12);
+  background-color: white;
+  border-radius: 16px;
+  padding: 0.5em 1em;
 }

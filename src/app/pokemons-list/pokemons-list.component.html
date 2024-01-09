@@ -1,6 +1,26 @@
+<div class="order-by-container">
+  <label for="order-by">Trier par :</label>
+  <select id="order-by" class="order-by" [(ngModel)]="order" (change)="orderPokemons(order)">
+    <option value="id asc">ID asc</option>
+    <option value="name asc">Nom asc</option>
+    <option value="defense asc">Défense asc</option>
+    <option value="attack asc">Attaque asc</option>
+    <option value="hp asc">HP asc</option>
+    <option value="speed asc">Vitesse asc</option>
+    <option value="special_attack asc">Attaque spéciale asc</option>
+    <option value="special_defense asc">Défense spéciale asc</option>
+    <option value="id desc">ID desc</option>
+    <option value="name desc">Nom desc</option>
+    <option value="defense desc">Défense desc</option>
+    <option value="attack desc">Attaque desc</option>
+    <option value="hp desc">HP desc</option>
+    <option value="speed desc">Vitesse desc</option>
+    <option value="special_attack desc">Attaque spéciale desc</option>
+    <option value="special_defense desc">Défense spéciale desc</option>
+  </select>
+</div>
 <div class="pokemon-list-card">
-  <app-pokemon-card
-    *ngFor="let pokemon of pokemons"
-    [pokemon]="pokemon"
-  ></app-pokemon-card>
+  @for (pokemon of pokemons; track pokemon.id){
+    <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+  }
 </div>

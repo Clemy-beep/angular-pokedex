@@ -34,11 +34,11 @@
         }
       </p>
       <p><span class="title">Immunités</span> :
-        <span *ngFor="let i of pokemon.resistances">
-        <span *ngIf="i.multiplier == 0" >
-          <img class="resistances" [src]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(i.name)+ '.png'" alt="immunities">
-        </span>
-      </span>
+        @for (i of pokemon.resistances; track i.name){
+          @if(i.multiplier === 0){
+            <img class="resistances" [src]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(i.name)+ '.png'" alt="immunities">
+          }
+        }
       </p>
       <p><span class="title">Genre</span> : {{pokemon.sexe.male }}% ♂️ {{pokemon.sexe.female}}% ♀️ </p>
       <p *ngIf="pokemon.egg_groups.length !== 0"><span class="title">Groups œufs</span> : <span *ngFor="let eggGroup of pokemon.egg_groups">{{eggGroup}} </span></p>

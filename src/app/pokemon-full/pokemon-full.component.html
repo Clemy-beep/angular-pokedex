@@ -27,11 +27,11 @@
         }
       </p>
       <p><span class="title">Résistances</span> :
-        <span *ngFor="let r of pokemon.resistances">
-        <span *ngIf="r.multiplier < 1 && r.multiplier > 0">
-          <img class="resistances" alt="resistance" [src]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(r.name)+ '.png'">
-        </span>
-      </span>
+        @for (r of pokemon.resistances; track r.name){
+          @if(r.multiplier < 1 && r.multiplier > 0){
+            <img class="resistances" [src]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(r.name)+ '.png'" alt="resistances">
+          }
+        }
       </p>
       <p><span class="title">Immunités</span> :
         <span *ngFor="let i of pokemon.resistances">

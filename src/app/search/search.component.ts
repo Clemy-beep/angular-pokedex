@@ -14,17 +14,16 @@ import {PokemonCardComponent} from "../pokemon-card/pokemon-card.component";
 export class SearchComponent {
   pokemonToSearch = new FormControl();
   pokemonsList : PokeBuildPokemon[] = [];
+  setLoading : boolean = false;
   searchPokemon() {
-    console.log("searchPokemon");
-    console.log(this.pokemonToSearch.value);
-    if (this.pokemonToSearch.value.length < 4){
+    if (this.pokemonToSearch.value.length < 3){
       this.pokemonsList = [];
       return;
     }
+    this.setLoading = true;
     fetch("https://pokebuildapi.fr/api/v1/pokemon").then(r => r.json()).then(data => {
       this.pokemonsList = data;
       this.pokemonsList = this.pokemonsList.filter(pokemon => pokemon.name.toLowerCase().includes(this.pokemonToSearch.value));
-      console.log(this.pokemonsList);
-    });
+    }).finally(() => this.setLoading = false);
   }
 }

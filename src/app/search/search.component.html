@@ -2,7 +2,23 @@
   <h2>Rechercher un pokémon 🔍</h2>
   <input type="text" name="search-pokemon" id="search-pokemon" class="search-bar" [formControl]="pokemonToSearch" (keyup)="searchPokemon()" placeholder="Tapez le nom du Pokémon recherché" >
 </div>
-<div class="search-result" *ngIf="pokemonToSearch.value !=='' && pokemonToSearch.value.length >= 4">
-  <app-pokemon-card *ngFor="let pokemon of pokemonsList" [pokemon]="pokemon"></app-pokemon-card>
+<div class="search-result">
+  @defer (when pokemonToSearch.value.length >= 3 && pokemonToSearch.value !== ''){
+    @if(setLoading){
+      <div class="search-placeholder">
+        <img class="loader" src="/assets/loader.gif">
+        <p>Chargement en cours...</p>
+      </div>
+    }
+      @for (pokemon of pokemonsList; track pokemon.id){
+        <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+      } @empty {
+        @if (!setLoading){
+          <div class="search-placeholder">
+            <p>Aucun résultat</p>
+          </div>
+        }
+      }
+  }
 </div>
 

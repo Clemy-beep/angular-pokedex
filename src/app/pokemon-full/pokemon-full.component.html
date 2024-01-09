@@ -20,11 +20,11 @@
       <p [class]="{'strongest-stat': strongestStat === pokemon.stats.spe_def, 'weakest-stat' : weakestStat === pokemon.stats.spe_def}"><span class="title">Défense spéciale</span> : {{pokemon.stats.spe_def}}</p>
       <p [class]="{'strongest-stat': strongestStat === pokemon.stats.vit, 'weakest-stat' : weakestStat === pokemon.stats.vit}"><span class="title">Vitesse</span> : {{pokemon.stats.vit}}</p>
       <p><span class="title">Faiblesses</span> :
-        <span *ngFor="let w of pokemon.resistances">
-        <span *ngIf="w.multiplier > 1">
-          <img class="resistances" alt="weaknesses" [src]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(w.name) + '.png'">
-        </span>
-      </span>
+        @for (w of pokemon.resistances; track w.name){
+          @if(w.multiplier > 1){
+            <img class="resistances" [src]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(w.name)+ '.png'" alt="weaknesses">
+          }
+        }
       </p>
       <p><span class="title">Résistances</span> :
         <span *ngFor="let r of pokemon.resistances">

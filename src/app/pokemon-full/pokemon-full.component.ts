@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {ActivatedRoute} from "@angular/router";
-import {TyradexPokemon} from "../types";
+import {PokemonResistance, TyradexPokemon} from "../types";
+
 @Component({
   selector: 'app-pokemon-full',
   standalone: true,
@@ -37,33 +38,34 @@ export class PokemonFullComponent {
     ],
   };
   img: string = '';
-  strongestStat : number = 0;
-  weakestStat : number = 0;
-  constructor(private route: ActivatedRoute) {}
+  strongestStat: number = 0;
+  weakestStat: number = 0;
+  resistancess: PokemonResistance[] = [];
+  weaknesses: PokemonResistance[] = [];
+  immunities: PokemonResistance[] = [];
+
+  constructor(private route: ActivatedRoute) {
+  }
+
   async ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
     await fetch(`https://tyradex.vercel.app/api/v1/pokemon/${id}`).then(res => res.json()).then(data => {
       this.pokemon = data;
       this.strongestStat = Math.max(data.stats.atk, data.stats.def, data.stats.hp, data.stats.spe_atk, data.stats.spe_def, data.stats.vit);
       this.weakestStat = Math.min(data.stats.atk, data.stats.def, data.stats.hp, data.stats.spe_atk, data.stats.spe_def, data.stats.vit);
+      this.resistancess = data.resistances.filter((res: PokemonResistance) => res.multiplier < 1);
+      this.weaknesses = data.resistances.filter((weakness: PokemonResistance) => weakness.multiplier > 1);
+      this.immunities = data.resistances.filter((immunity: PokemonResistance) => immunity.multiplier == 0);
     });
     this.img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
-    console.log(this.strongestStat, this.weakestStat)
   }
-  toNormalForm(str: string) : string {
-    let r = str.toLowerCase();
-    r = r.replace(new RegExp("\\s", 'g'),"");
-    r = r.replace(new RegExp("[àáâãäå]", 'g'),"a");
-    r = r.replace(new RegExp("æ", 'g'),"ae");
-    r = r.replace(new RegExp("ç", 'g'),"c");
-    r = r.replace(new RegExp("[èéêë]", 'g'),"e");
-    r = r.replace(new RegExp("[ìíîï]", 'g'),"i");
-    r = r.replace(new RegExp("ñ", 'g'),"n");
-    r = r.replace(new RegExp("[òóôõö]", 'g'),"o");
-    r = r.replace(new RegExp("œ", 'g'),"oe");
-    r = r.replace(new RegExp("[ùúûü]", 'g'),"u");
-    r = r.replace(new RegExp("[ýÿ]", 'g'),"y");
-    r = r.replace(new RegExp("\\W", 'g'),"");
-    return r;
+
+  toNormalForm(str: string): string {
+    let typeDictionary: { [key: string]: string } = {
+      "fée": "fee",
+      "ténèbres": "tenebres",
+      "électrik": "electrik"
+    }
+    return typeDictionary[str.toLowerCase()] || str.toLowerCase();
   }
 }

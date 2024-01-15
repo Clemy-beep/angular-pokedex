@@ -1,6 +1,6 @@
 export type TyradexPokemon = {
   pokedexId: number;
-  name : {
+  name: {
     fr: string;
     en: string;
     jp: string;
@@ -22,12 +22,7 @@ export type TyradexPokemon = {
     spe_def: number;
     vit: number;
   },
-  resistances: [
-    {
-      name: string;
-      multiplier: number;
-    }
-  ],
+  resistances: PokemonResistance[],
   egg_groups: string[];
   sexe: {
     male: number;
@@ -61,4 +56,9 @@ export type PokeBuildPokemon = {
 type type = {
   name: string;
   image: string;
+}
+
+export type PokemonResistance = {
+  name: string;
+  multiplier: number;
 }

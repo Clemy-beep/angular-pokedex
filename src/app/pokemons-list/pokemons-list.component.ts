@@ -1,24 +1,27 @@
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
+import {Component, Input} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {PokemonCardComponent} from '../pokemon-card/pokemon-card.component';
 import {PokeBuildPokemon} from "../types";
 import {FormsModule} from "@angular/forms";
+import {GenerationSelectorComponent} from "../generation-selector/generation-selector.component";
 
 
 @Component({
   selector: "app-pokemons-list",
   standalone: true,
-  imports: [CommonModule, PokemonCardComponent, FormsModule],
+  imports: [CommonModule, PokemonCardComponent, FormsModule, GenerationSelectorComponent],
   templateUrl: './pokemons-list.component.html',
   styleUrl: './pokemons-list.component.css'
 })
 export class PokemonsListComponent {
   @Input() requestUrl: string = "https://pokebuildapi.fr/api/v1/pokemon/generation/1";
   pokemons: PokeBuildPokemon[] = [];
-  order: string =  "id asc";
+  order: string = "id asc";
+
   ngOnInit(): void {
     fetch(this.requestUrl).then(res => res.json()).then(res => this.pokemons = res);
   }
+
   orderPokemons(order: string) {
     switch (order) {
       case "id asc":

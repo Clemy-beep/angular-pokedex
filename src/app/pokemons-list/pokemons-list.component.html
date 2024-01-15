@@ -1,26 +1,27 @@
 <div class="order-by-container">
   <label for="order-by">Trier par :</label>
   <select id="order-by" class="order-by" [(ngModel)]="order" (change)="orderPokemons(order)">
-    <option value="id asc">ID asc</option>
-    <option value="name asc">Nom asc</option>
-    <option value="defense asc">Défense asc</option>
-    <option value="attack asc">Attaque asc</option>
-    <option value="hp asc">HP asc</option>
-    <option value="speed asc">Vitesse asc</option>
-    <option value="special_attack asc">Attaque spéciale asc</option>
-    <option value="special_defense asc">Défense spéciale asc</option>
-    <option value="id desc">ID desc</option>
-    <option value="name desc">Nom desc</option>
-    <option value="defense desc">Défense desc</option>
-    <option value="attack desc">Attaque desc</option>
-    <option value="hp desc">HP desc</option>
-    <option value="speed desc">Vitesse desc</option>
-    <option value="special_attack desc">Attaque spéciale desc</option>
-    <option value="special_defense desc">Défense spéciale desc</option>
+    <option value="id asc">ID croissant</option>
+    <option value="name asc">Nom A-Z</option>
+    <option value="defense asc">Défense croissant</option>
+    <option value="attack asc">Attaque croissant</option>
+    <option value="hp asc">HP croissant</option>
+    <option value="speed asc">Vitesse croissant</option>
+    <option value="special_attack asc">Attaque spéciale croissant</option>
+    <option value="special_defense asc">Défense spéciale croissant</option>
+    <option value="id desc">ID décroissant</option>
+    <option value="name desc">Nom Z-A</option>
+    <option value="defense desc">Défense décroissant</option>
+    <option value="attack desc">Attaque décroissant</option>
+    <option value="hp desc">HP décroissant</option>
+    <option value="speed desc">Vitesse décroissant</option>
+    <option value="special_attack desc">Attaque spéciale décroissant</option>
+    <option value="special_defense desc">Défense spéciale décroissant</option>
   </select>
+  <app-generation-selector></app-generation-selector>
 </div>
 <div class="pokemon-list-card">
-  @for (pokemon of pokemons; track pokemon.id){
+  @for (pokemon of pokemons; track pokemon.id) {
     <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
   }
 </div>

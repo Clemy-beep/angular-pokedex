@@ -2,13 +2,20 @@
   <div>
     <div class="pokemon-types">
       <h2><a [routerLink]="['/pokemon', pokemon.id]">{{ pokemon.name }}</a></h2>
-      <img
-        class="pokemon-type"
-        *ngFor="let type of pokemon.apiTypes"
-        [src]="type.image"
-        alt="pokemon-img"/>
+      @for (type of pokemon.apiTypes; track type.name) {
+        <img
+          class="pokemon-type"
+          ngSrc="{{type.image}}"
+          width="50"
+          height="50"
+          alt="{{type.name}}"
+        />
+      }
     </div>
-    <img [src]="pokemon.image" [alt]="pokemon.name" />
+    <img [ngSrc]="pokemon.image"
+         width="200"
+         height="200"
+         [alt]="pokemon.name"/>
   </div>
   <div class="pokemon-stats">
     <p>PV : {{ pokemon.stats.HP }}</p>

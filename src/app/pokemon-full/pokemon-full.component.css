@@ -1,12 +1,12 @@
-.container{
+.container {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 2em;
 }
 
-.content{
+.content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,11 +16,11 @@
   margin: 0 auto;
 }
 
-h1{
+h1 {
   text-decoration: underline 4px solid rgb(248, 193, 12);
 }
 
-.pokemon-types{
+.pokemon-types {
   display: inline;
   margin: 0.2em;
   vertical-align: middle;
@@ -29,14 +29,14 @@ h1{
   border-radius: 50%;
 }
 
-sub{
+sub {
   font-size: 1.1em;
   font-style: italic;
   color: rgb(220, 59, 59);
   font-weight: 500;
 }
 
-.resistances{
+.resistances {
   display: inline;
   margin: 0.2em;
   vertical-align: middle;
@@ -45,21 +45,23 @@ sub{
   border-radius: 50%;
 }
 
-.title{
+.title {
   font-weight: 500;
   text-decoration: underline 4px solid rgb(248, 193, 12);
 }
 
-.strongest-stat{
+.strongest-stat {
   text-decoration: underline 4px solid #41cc80;
 }
 
-.weakest-stat{
-   text-decoration: underline 4px solid red;
+.weakest-stat {
+  text-decoration: underline 4px solid red;
 }
-.weakest-stat .title{
+
+.weakest-stat .title {
   text-decoration: none;
 }
-.strongest-stat .title{
+
+.strongest-stat .title {
   text-decoration: none;
 }

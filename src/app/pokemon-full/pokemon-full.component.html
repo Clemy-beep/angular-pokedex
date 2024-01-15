@@ -1,47 +1,85 @@
 <div class="content" xmlns="http://www.w3.org/1999/html">
-  <h1>{{pokemon.name.fr}}
+  <h1>{{ pokemon.name.fr }}
     <img class="pokemon-types" *ngFor="let type of pokemon.types" [src]="type.image" alt="pokemon-type">
   </h1>
-  <sub>{{pokemon.category}}</sub>
+  <sub>{{ pokemon.category }}</sub>
   <div class="container">
-    <img [src]="img" class="pokemon-img"  alt="pokemon img">
+    <img [ngSrc]="img" width="400" height="400" class="pokemon-img" alt="pokemon img">
     <div>
-      <label><span class="title">ID</span> : </label> {{pokemon.pokedexId}}
-      <p><span class="title" >Height</span> : {{pokemon.height}}</p>
-      <p><span class="title">Weight</span> : {{pokemon.weight}}</p>
+      <label><span class="title">ID</span> : </label> {{ pokemon.pokedexId }}
+      <p><span class="title">Height</span> : {{ pokemon.height }}</p>
+      <p><span class="title">Weight</span> : {{ pokemon.weight }}</p>
       <p class="title"> Talents :</p>
       <ul>
-        <li *ngFor="let talent of pokemon.talents">{{talent.name}}<span *ngIf="talent.tc"> (caché)</span> </li>
+        @for (talent of pokemon.talents; track talent.name) {
+          <li>{{ talent.name }}
+            @if (talent.tc) {
+              <span>(caché)</span>
+            }
+          </li>
+        }
       </ul>
-      <p  [class]="{'strongest-stat': strongestStat === pokemon.stats.hp, 'weakest-stat' : weakestStat === pokemon.stats.hp}"><span class="title">PV</span> : {{pokemon.stats.hp}}</p>
-      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.atk, 'weakest-stat' : weakestStat === pokemon.stats.atk}"><span class="title" >Attaque</span> : {{pokemon.stats.atk}}</p>
-      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.def, 'weakest-stat' : weakestStat === pokemon.stats.def}"><span class="title">Défense</span> : {{pokemon.stats.def}}</p>
-      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.spe_atk, 'weakest-stat' : weakestStat === pokemon.stats.spe_atk}"><span class="title">Attaque spéciale</span> : {{pokemon.stats.spe_atk}}</p>
-      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.spe_def, 'weakest-stat' : weakestStat === pokemon.stats.spe_def}"><span class="title">Défense spéciale</span> : {{pokemon.stats.spe_def}}</p>
-      <p [class]="{'strongest-stat': strongestStat === pokemon.stats.vit, 'weakest-stat' : weakestStat === pokemon.stats.vit}"><span class="title">Vitesse</span> : {{pokemon.stats.vit}}</p>
+      <p
+        [class]="{'strongest-stat': strongestStat === pokemon.stats.hp, 'weakest-stat' : weakestStat === pokemon.stats.hp}">
+        <span class="title">PV</span> : {{ pokemon.stats.hp }}</p>
+      <p
+        [class]="{'strongest-stat': strongestStat === pokemon.stats.atk, 'weakest-stat' : weakestStat === pokemon.stats.atk}">
+        <span class="title">Attaque</span> : {{ pokemon.stats.atk }}</p>
+      <p
+        [class]="{'strongest-stat': strongestStat === pokemon.stats.def, 'weakest-stat' : weakestStat === pokemon.stats.def}">
+        <span class="title">Défense</span> : {{ pokemon.stats.def }}</p>
+      <p
+        [class]="{'strongest-stat': strongestStat === pokemon.stats.spe_atk, 'weakest-stat' : weakestStat === pokemon.stats.spe_atk}">
+        <span class="title">Attaque spéciale</span> : {{ pokemon.stats.spe_atk }}</p>
+      <p
+        [class]="{'strongest-stat': strongestStat === pokemon.stats.spe_def, 'weakest-stat' : weakestStat === pokemon.stats.spe_def}">
+        <span class="title">Défense spéciale</span> : {{ pokemon.stats.spe_def }}</p>
+      <p
+        [class]="{'strongest-stat': strongestStat === pokemon.stats.vit, 'weakest-stat' : weakestStat === pokemon.stats.vit}">
+        <span class="title">Vitesse</span> : {{ pokemon.stats.vit }}</p>
       <p><span class="title">Faiblesses</span> :
-        @for (w of pokemon.resistances; track w.name){
-          @if(w.multiplier > 1){
-            <img class="resistances" [src]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(w.name)+ '.png'" alt="weaknesses">
-          }
+        @for (weakness of weaknesses; track weakness.name) {
+          <img class="resistances"
+               [ngSrc]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(weakness.name)+ '.png'"
+               width="1"
+               height="1"
+               alt="weaknesses">
+
+        } @empty {
+          <span>Aucune</span>
         }
       </p>
       <p><span class="title">Résistances</span> :
-        @for (r of pokemon.resistances; track r.name){
-          @if(r.multiplier < 1 && r.multiplier > 0){
-            <img class="resistances" [src]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(r.name)+ '.png'" alt="resistances">
-          }
+        @for (r of resistancess; track r.name) {
+          <img class="resistances"
+               [ngSrc]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(r.name)+ '.png'"
+               width="1"
+               height="1"
+               alt="resistances">
+        } @empty {
+          <span>Aucune</span>
         }
       </p>
       <p><span class="title">Immunités</span> :
-        @for (i of pokemon.resistances; track i.name){
-          @if(i.multiplier === 0){
-            <img class="resistances" [src]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(i.name)+ '.png'" alt="immunities">
-          }
+        @for (i of immunities; track i.name; ) {
+          <img class="resistances"
+               [ngSrc]="'https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/types/' + toNormalForm(i.name)+ '.png'"
+               width="1"
+               height="1"
+               alt="immunities">
+        } @empty {
+          <span>Aucune</span>
         }
       </p>
-      <p><span class="title">Genre</span> : {{pokemon.sexe.male }}% ♂️ {{pokemon.sexe.female}}% ♀️ </p>
-      <p *ngIf="pokemon.egg_groups.length !== 0"><span class="title">Groups œufs</span> : <span *ngFor="let eggGroup of pokemon.egg_groups">{{eggGroup}} </span></p>
+      <p><span class="title">Genre</span> : {{ pokemon.sexe.male }}% ♂️ {{ pokemon.sexe.female }}% ♀️ </p>
+      @if (pokemon.egg_groups.length !== 0) {
+        <p>
+          <span class="title">Groupe oeufs : </span>
+          @for (eggGroup of pokemon.egg_groups; track eggGroup) {
+            <span>{{ eggGroup }}</span>
+          }
+        </p>
+      }
     </div>
   </div>
 </div>
